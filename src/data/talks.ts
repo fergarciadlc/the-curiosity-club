@@ -30,10 +30,10 @@ export const talks: Talk[] = [
     slug: "baking-strudels-with-js",
     title: "Baking Strudels with JS",
     presenter: {
-      name: "Sang",
-      // website: "https://...",
-      // linkedin: "https://linkedin.com/in/...",
-      // github: "https://github.com/...",
+      name: "Sangarshanan",
+      website: "https://sangarshanan.com/",
+      linkedin: "https://www.linkedin.com/in/sangarshanan/",
+      github: "https://github.com/sangarshanan",
     },
     description:
       "Writing code and making beats: An introduction to live coding using Strudel",
@@ -57,7 +57,7 @@ No prior coding or music experience required—just bring your curiosity!`,
         { label: "Strudel Documentation", url: "https://strudel.cc/learn/" },
       ],
     },
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    video: "https://www.youtube.com/embed/Dlg9KvqNLLo",
   },
   {
     slug: "audio-plugins-juce-cpp",
