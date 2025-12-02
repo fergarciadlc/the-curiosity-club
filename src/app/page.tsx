@@ -174,7 +174,7 @@ export default function Home() {
             Whether it's a talk, a demo, or a mini-workshop—we'd love to hear from you.
           </p>
           <a
-            href="https://forms.gle/YOUR_GOOGLE_FORM_ID"
+            href="https://forms.gle/maEM77xhej1QonKn9"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
