@@ -50,9 +50,9 @@ Edit `src/data/talks.ts` and add a new entry:
 
 Then push to GitHub → Vercel auto-deploys.
 
-## Updating the Proposal Form
+## Proposal Form
 
-Update the Google Form link in `src/app/page.tsx` (search for `YOUR_GOOGLE_FORM_ID`).
+The proposal form link is configured in `src/app/page.tsx`.
 
 ## Stack
 
