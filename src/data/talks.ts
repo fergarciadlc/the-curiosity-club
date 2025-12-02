@@ -57,7 +57,7 @@ No prior coding or music experience required—just bring your curiosity!`,
         { label: "Strudel Documentation", url: "https://strudel.cc/learn/" },
       ],
     },
-    video: "https://www.youtube.com/watch?v=Dlg9KvqNLLo",
+    video: "https://www.youtube.com/embed/Dlg9KvqNLLo",
   },
   {
     slug: "audio-plugins-juce-cpp",
