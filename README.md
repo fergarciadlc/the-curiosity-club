@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Curiosity Club 🔍
+
+A website for the **Curiosity Club** at the Music Technology Group (MTG), Universitat Pompeu Fabra.
+
+A series of sessions where anyone can teach, share, or show something cool. Technical, non-technical, artistic, weird… everything is welcome.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding a New Talk
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `src/data/talks.ts` and add a new entry:
 
-## Learn More
+```typescript
+{
+  slug: "my-talk-slug",
+  title: "My Talk Title",
+  presenter: {
+    name: "Your Name",
+    website: "https://yoursite.com",      // optional
+    linkedin: "https://linkedin.com/in/you", // optional
+    github: "https://github.com/you",     // optional
+    twitter: "https://x.com/you",         // optional
+  },
+  description: "Short description for the card",
+  longDescription: `Longer description shown on the talk page...`,
+  date: "2025-01-15",      // or "TBD"
+  time: "14:00-16:00",
+  location: "Demo Room",
+  status: "upcoming",      // or "past"
+  tags: ["tag1", "tag2"],
+  
+  // Optional - add after the session:
+  materials: {
+    slides: "https://link-to-slides",
+    code: "https://github.com/...",
+    links: [
+      { label: "Resource", url: "https://..." }
+    ]
+  },
+  video: "https://www.youtube.com/embed/VIDEO_ID"  // must be embed URL
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+Then push to GitHub → Vercel auto-deploys.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Updating the Proposal Form
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Update the Google Form link in `src/app/page.tsx` (search for `YOUR_GOOGLE_FORM_ID`).
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 15
+- Tailwind CSS
+- TypeScript
+- Hosted on Vercel
