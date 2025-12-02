@@ -91,7 +91,7 @@ Please prepare your development environment:
 
 *Option A — Easy (using Projucer):*
 - **macOS:** Install [Xcode](https://developer.apple.com/xcode/)
-- **Windows:** Install [Visual Studio](https://visualstudio.microsoft.com/) with C++ tools
+- **Windows:** Install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) with C++ tools
 
 *Option B — Advanced (using CMake + your IDE of choice):*
 - **macOS:** Install [CMake](https://gist.github.com/fscm/29fd23093221cf4d96ccfaac5a1a5c90)
