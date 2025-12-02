@@ -61,7 +61,7 @@ No prior coding or music experience required—just bring your curiosity!`,
   },
   {
     slug: "audio-plugins-juce-cpp",
-    title: "Building Audio Plugins with JUCE + C++",
+    title: "An Introduction to Audio Plugins with JUCE and C++",
     presenter: {
       name: "Fernando",
       website: "https://fergarciadlc.github.io/",
@@ -69,28 +69,44 @@ No prior coding or music experience required—just bring your curiosity!`,
       github: "https://github.com/fergarciadlc",
     },
     description:
-      "A hands-on introduction to creating professional audio plugins using the JUCE framework",
-    longDescription: `Ever wondered how your favorite synthesizers, effects, and audio tools are built? In this session, we'll dive into the world of audio plugin development using JUCE, a powerful C++ framework used by industry professionals.
+      "A hands-on introduction to creating audio plugins using the JUCE framework",
+    longDescription: `Ever wondered how audio plugins are built? In this session, we'll dive into audio plugin development using **JUCE**, a powerful C++ framework used by industry professionals.
 
-Topics covered:
-- Introduction to the JUCE framework
+## What we'll cover
+
+- Introduction to the **JUCE framework**
 - DSP fundamentals for audio processing
-- Building a simple distortion plugin from scratch
+- Building a *simple distortion plugin* from scratch
 - Tips for plugin development
 
-Things to prepare before the session:
+We'll show how to create a plugin using both **Projucer** and **CMake**.
 
-MacOs:
-- Install Xcode
-- Install JUCE
+## Before the session
 
-Windows:
-- Install Visual Studio
-- Install JUCE
+Please prepare your development environment:
 
-Linux:
-- Install JUCE
-This session is suitable for anyone curious about audio software development, though some programming experience will be helpful.`,
+**1. Download the [JUCE SDK](https://juce.com/download)**
+
+**2. Choose your setup:**
+
+*Option A — Easy (using Projucer):*
+- **macOS:** Install [Xcode](https://developer.apple.com/xcode/)
+- **Windows:** Install [Visual Studio](https://visualstudio.microsoft.com/) with C++ tools
+
+*Option B — Advanced (using CMake + your IDE of choice):*
+- **macOS:** Install [CMake](https://gist.github.com/fscm/29fd23093221cf4d96ccfaac5a1a5c90)
+- **Windows:** Install [CMake](https://cmake.org/download/)
+- **Linux:** CMake 3.20+ and C++ build tools
+
+## Useful links
+
+- [JUCE Documentation](https://juce.com/learn)
+- [JUCE GitHub](https://github.com/juce-framework/JUCE)
+- [JUCE Projucer Tutorial](https://juce.com/tutorials/tutorial_new_projucer_project/)
+- [JUCE CMake Guide](https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md)
+
+This session is suitable for anyone curious about audio software development. Some programming experience will be helpful but *not required*!
+`,
     date: "2024-12-04",
     time: "14:00-16:00",
     location: "Demo Room",
