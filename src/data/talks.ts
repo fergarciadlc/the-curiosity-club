@@ -64,7 +64,7 @@ No prior coding or music experience required—just bring your curiosity!`,
     title: "Building Audio Plugins with JUCE + C++",
     presenter: {
       name: "Fernando",
-      website: "fergarciadlc.github.io",
+      website: "https://fergarciadlc.github.io/",
       linkedin: "https://linkedin.com/in/fergarciadlc",
       github: "https://github.com/fergarciadlc",
     },
@@ -73,12 +73,23 @@ No prior coding or music experience required—just bring your curiosity!`,
     longDescription: `Ever wondered how your favorite synthesizers, effects, and audio tools are built? In this session, we'll dive into the world of audio plugin development using JUCE, a powerful C++ framework used by industry professionals.
 
 Topics covered:
-- Introduction to the JUCE framework and its ecosystem
-- Understanding audio plugin formats (VST, AU, AAX)
-- Building a simple synthesizer from scratch
+- Introduction to the JUCE framework
 - DSP fundamentals for audio processing
-- Tips for debugging and testing audio code
+- Building a simple distortion plugin from scratch
+- Tips for plugin development
 
+Things to prepare before the session:
+
+MacOs:
+- Install Xcode
+- Install JUCE
+
+Windows:
+- Install Visual Studio
+- Install JUCE
+
+Linux:
+- Install JUCE
 This session is suitable for anyone curious about audio software development, though some programming experience will be helpful.`,
     date: "2024-12-04",
     time: "14:00-16:00",
