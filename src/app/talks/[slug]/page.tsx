@@ -1,6 +1,7 @@
 import { getTalkBySlug, talks } from "@/data/talks";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Markdown from "@/components/Markdown";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -167,23 +168,7 @@ export default async function TalkPage({ params }: Props) {
             About this session
           </h2>
           <div className="prose-talk">
-            {talk.longDescription ? (
-              talk.longDescription.split("\n\n").map((p, i) => {
-                if (p.includes("\n- ") || p.startsWith("- ")) {
-                  const items = p.split("\n").filter((l) => l.startsWith("- "));
-                  return (
-                    <ul key={i}>
-                      {items.map((item, j) => (
-                        <li key={j}>{item.replace("- ", "")}</li>
-                      ))}
-                    </ul>
-                  );
-                }
-                return <p key={i}>{p}</p>;
-              })
-            ) : (
-              <p>{talk.description}</p>
-            )}
+            <Markdown>{talk.longDescription || talk.description}</Markdown>
           </div>
         </section>
 
