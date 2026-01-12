@@ -46,7 +46,7 @@ We'll explore:
 - The philosophy behind algorithmic music creation
 
 No prior coding or music experience required—just bring your curiosity!`,
-    date: "2024-11-27",
+    date: "2025-11-27",
     time: "14:00-16:00",
     location: "Demo Room",
     status: "past",
@@ -107,7 +107,7 @@ Please prepare your development environment:
 
 This session is suitable for anyone curious about audio software development. Some programming experience will be helpful but *not required*!
 `,
-    date: "2024-12-04",
+    date: "2025-12-04",
     time: "14:00-16:00",
     location: "Demo Room",
     status: "upcoming",
