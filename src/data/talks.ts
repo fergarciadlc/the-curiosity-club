@@ -110,8 +110,36 @@ This session is suitable for anyone curious about audio software development. So
     date: "2025-12-04",
     time: "14:00-16:00",
     location: "Demo Room",
-    status: "upcoming",
+    status: "past",
     tags: ["audio", "C++", "JUCE", "plugins", "DSP"],
+  },
+  {
+    slug: "puredata-maxmsp-intro",
+    title: "Introduction to PureData and Max/MSP",
+    presenter: {
+      name: "Olly",
+      website: "https://ollyflaig.com/",
+      linkedin: "https://www.linkedin.com/in/oliver-flaig-8262b6286/",
+      github: "https://github.com/oflaig",
+    },
+    description:
+      "An introductory workshop on visual programming for audio and multimedia using PureData and Max/MSP",
+    longDescription: `
+This presentation will be an introduction to PureData and Max/MSP, talking about what they are and why people use them! 
+I'll then give a bit of a walkthrough on some of the basics of patching, with the aim of making a very basic sequencer, depending on where we get to.
+
+I will talk a little bit about the differences between Pd and Max, but at the level of this tutorial, all of the functionality is exactly the same and can be executed in both programmes. 
+I'm going to be working in PureData, because it is completely free: [https://puredata.info/downloads/pure-data](https://puredata.info/downloads/pure-data)
+
+But if you particularly want to use Max instead, you can get a 30 day free trial: [https://cycling74.com/downloads/max](https://cycling74.com/downloads/max)
+
+Other than that, all you'll need is a laptop and (ideally) some headphones. See you there!
+`,
+    date: "2026-01-16",
+    time: "14:00-16:00",
+    location: "Demo Room",
+    status: "upcoming",
+    tags: ["audio", "puredata", "maxmsp", "visual programming"],
   },
 ];
 
