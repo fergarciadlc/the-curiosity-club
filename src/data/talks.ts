@@ -141,6 +141,30 @@ Other than that, all you'll need is a laptop and (ideally) some headphones. See 
     status: "upcoming",
     tags: ["audio", "puredata", "maxmsp", "visual programming"],
   },
+  {
+    slug: "mixing-101",
+    title: "Mixing 101",
+    presenter: {
+      name: "Rafael E Moncayo Palate",
+      linkedin: "https://www.linkedin.com/in/rafaelmoncayopalate/",
+    },
+    description: "Introductory session on music mixing and plugin use",
+    longDescription: `This session is designed for anyone looking to learn about music mixing and the use of plugins. We will start by discussing the different types of effects, focusing on the most essential ones and how to use them correctly. We’ll also debunk a few myths and misconceptions about professional mixing. We will explore mixing techniques aimed at achieving rich sonority rather than just high volume—all backed by a deep dive into the FL Studio project of my latest song, 'Ayer tuve un sueño.'
+This class requires nothing more than a desire to understand the professional process that every song goes through.`,
+    date: "2026-01-19",
+    time: "17:00-18:00",
+    location: "Demo Room",
+    status: "upcoming",
+    tags: ["audio", "music", "mixing", "plugins", "DAWs"],
+    materials: {
+      links: [
+        {
+          label: "Callme BW on Spotify",
+          url: "https://open.spotify.com/intl-es/artist/65U5Rb4CxQKnZwT38Z9DUX?si=Wz-nwElnQkyWzxxSw9e3aw",
+        },
+      ],
+    },
+  },
 ];
 
 export function getTalkBySlug(slug: string): Talk | undefined {
