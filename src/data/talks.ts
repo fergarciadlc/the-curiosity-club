@@ -28,10 +28,9 @@ export function getTalkStatus(talk: Talk): "upcoming" | "past" | "tbd" {
   if (talk.date === "TBD") {
     return "tbd";
   }
-  const talkDate = new Date(talk.date);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Reset time to compare just dates
-  return talkDate >= today ? "upcoming" : "past";
+  // Compare date strings directly (ISO format YYYY-MM-DD allows string comparison)
+  const today = new Date().toISOString().split("T")[0];
+  return talk.date >= today ? "upcoming" : "past";
 }
 
 export const talks: Talk[] = [

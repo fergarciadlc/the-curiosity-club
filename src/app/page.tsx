@@ -1,7 +1,7 @@
-import { getUpcomingTalks, getPastTalks, Talk } from "@/data/talks";
+import { getUpcomingTalks, getPastTalks, Talk, getTalkStatus } from "@/data/talks";
 
 function TalkCard({ talk }: { talk: Talk }) {
-  const isUpcoming = talk.status === "upcoming";
+  const isUpcoming = getTalkStatus(talk) === "upcoming";
 
   return (
     <a href={`/talks/${talk.slug}`} className="card block p-6">

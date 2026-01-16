@@ -1,4 +1,4 @@
-import { getTalkBySlug, talks } from "@/data/talks";
+import { getTalkBySlug, talks, getTalkStatus } from "@/data/talks";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Markdown from "@/components/Markdown";
@@ -38,7 +38,7 @@ export default async function TalkPage({ params }: Props) {
 
   if (!talk) notFound();
 
-  const isUpcoming = talk.status === "upcoming";
+  const isUpcoming = getTalkStatus(talk) === "upcoming";
 
   return (
     <div className="px-6 pb-20">
