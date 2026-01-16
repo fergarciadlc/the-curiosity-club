@@ -12,10 +12,9 @@ export interface Talk {
   presenter: Presenter;
   description: string;
   longDescription?: string;
-  date: string;
+  date: string; // ISO date (YYYY-MM-DD) or "TBD" for unscheduled talks
   time: string;
   location: string;
-  status: "upcoming" | "past";
   tags: string[];
   materials?: {
     slides?: string;
@@ -23,6 +22,16 @@ export interface Talk {
     links?: { label: string; url: string }[];
   };
   video?: string; // YouTube EMBED URL: https://www.youtube.com/embed/VIDEO_ID
+}
+
+export function getTalkStatus(talk: Talk): "upcoming" | "past" | "tbd" {
+  if (talk.date === "TBD") {
+    return "tbd";
+  }
+  const talkDate = new Date(talk.date);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to compare just dates
+  return talkDate >= today ? "upcoming" : "past";
 }
 
 export const talks: Talk[] = [
@@ -49,7 +58,6 @@ No prior coding or music experience required—just bring your curiosity!`,
     date: "2025-11-27",
     time: "14:00-16:00",
     location: "Demo Room",
-    status: "past",
     tags: ["live coding", "music", "javascript", "strudel"],
     materials: {
       links: [
@@ -110,7 +118,6 @@ This session is suitable for anyone curious about audio software development. So
     date: "2025-12-04",
     time: "14:00-16:00",
     location: "Demo Room",
-    status: "past",
     tags: ["audio", "C++", "JUCE", "plugins", "DSP"],
   },
   {
@@ -138,7 +145,6 @@ Other than that, all you'll need is a laptop and (ideally) some headphones. See 
     date: "2026-01-16",
     time: "14:00-16:00",
     location: "Demo Room",
-    status: "upcoming",
     tags: ["audio", "puredata", "maxmsp", "visual programming"],
   },
   {
@@ -154,7 +160,6 @@ This class requires nothing more than a desire to understand the professional pr
     date: "2026-01-19",
     time: "17:00-18:00",
     location: "Demo Room",
-    status: "upcoming",
     tags: ["audio", "music", "mixing", "plugins", "DAWs"],
     materials: {
       links: [
@@ -172,9 +177,13 @@ export function getTalkBySlug(slug: string): Talk | undefined {
 }
 
 export function getUpcomingTalks(): Talk[] {
-  return talks.filter((talk) => talk.status === "upcoming");
+  return talks.filter((talk) => getTalkStatus(talk) === "upcoming");
 }
 
 export function getPastTalks(): Talk[] {
-  return talks.filter((talk) => talk.status === "past");
+  return talks.filter((talk) => getTalkStatus(talk) === "past");
+}
+
+export function getTBDTalks(): Talk[] {
+  return talks.filter((talk) => getTalkStatus(talk) === "tbd");
 }

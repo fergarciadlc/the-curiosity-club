@@ -30,10 +30,9 @@ Edit `src/data/talks.ts` and add a new entry:
   },
   description: "Short description for the card",
   longDescription: `Longer description shown on the talk page...`,
-  date: "2025-01-15",      // or "TBD"
-  time: "14:00-16:00",
+  date: "2025-01-15",      // ISO format (YYYY-MM-DD) or "TBD" for unscheduled talks
+  time: "14:00-16:00",     // or "TBD"
   location: "Demo Room",
-  status: "upcoming",      // or "past"
   tags: ["tag1", "tag2"],
   
   // Optional - add after the session:
@@ -47,6 +46,8 @@ Edit `src/data/talks.ts` and add a new entry:
   video: "https://www.youtube.com/embed/VIDEO_ID"  // must be embed URL
 }
 ```
+
+**Note:** The status (`upcoming`, `past`, or `tbd`) is automatically determined based on the date. No need to set it manually!
 
 Then push to GitHub → Vercel auto-deploys.
 
