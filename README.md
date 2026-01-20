@@ -33,6 +33,7 @@ Edit `src/data/talks.ts` and add a new entry:
   date: "2025-01-15",      // ISO format (YYYY-MM-DD) or "TBD" for unscheduled talks
   time: "14:00-16:00",     // or "TBD"
   location: "Demo Room",
+  timezone: "America/New_York", // optional - IANA timezone. Defaults to "Europe/Madrid"
   tags: ["tag1", "tag2"],
   
   // Optional - add after the session:
@@ -47,7 +48,21 @@ Edit `src/data/talks.ts` and add a new entry:
 }
 ```
 
-**Note:** The status (`upcoming`, `past`, or `tbd`) is automatically determined based on the date. No need to set it manually!
+### Automatic Features
+
+**Status Computation:** The talk status (`upcoming` or `past`) is automatically computed based on the date and timezone. No need to set it manually!
+
+**Timezone Handling:**
+- All talks default to `Europe/Madrid` timezone (CET/CEST)
+- Times are displayed with timezone abbreviation (e.g., "14:00-16:00 CET")
+- Automatic DST handling (switches between CET and CEST)
+- For remote talks, specify a custom `timezone` (e.g., `"America/New_York"`)
+- Status computation uses the talk's timezone for accurate "upcoming" vs "past" determination
+
+**ISR (Incremental Static Regeneration):**
+- Pages revalidate every 24 hours
+- Status changes appear automatically without manual rebuilds
+- Perfect for Vercel's free tier
 
 Then push to GitHub → Vercel auto-deploys.
 
