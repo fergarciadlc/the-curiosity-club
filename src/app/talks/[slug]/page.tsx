@@ -1,8 +1,9 @@
-import { getTalkBySlug, talks, getTalkStatus } from "@/data/talks";
+import { getTalkBySlug, talks, getTimezoneAbbreviation, DEFAULT_TIMEZONE } from "@/data/talks";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Markdown from "@/components/Markdown";
-
+// Revalidate every 24 hours to automatically update talk statuses
+export const revalidate = 86400;
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -38,7 +39,7 @@ export default async function TalkPage({ params }: Props) {
 
   if (!talk) notFound();
 
-  const isUpcoming = getTalkStatus(talk) === "upcoming";
+  const isUpcoming = talk.status === "upcoming";
 
   return (
     <div className="px-6 pb-20">
@@ -125,7 +126,7 @@ export default async function TalkPage({ params }: Props) {
               <svg className="w-5 h-5" style={{ color: "var(--accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              {talk.time}
+              {talk.time} {getTimezoneAbbreviation(talk.date, talk.timezone || DEFAULT_TIMEZONE)}
             </span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5" style={{ color: "var(--accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -247,7 +248,7 @@ export default async function TalkPage({ params }: Props) {
               Don't miss this session!
             </h3>
             <p className="opacity-90">
-              {formatDate(talk.date)} · {talk.time} · {talk.location}
+              {formatDate(talk.date)} · {talk.time} {getTimezoneAbbreviation(talk.date, talk.timezone || DEFAULT_TIMEZONE)} · {talk.location}
             </p>
           </div>
         )}

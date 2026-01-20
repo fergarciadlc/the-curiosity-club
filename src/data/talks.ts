@@ -1,3 +1,6 @@
+// Default timezone for all talks
+export const DEFAULT_TIMEZONE = "Europe/Madrid";
+
 export interface Presenter {
   name: string;
   website?: string;
@@ -15,6 +18,8 @@ export interface Talk {
   date: string; // ISO date (YYYY-MM-DD) or "TBD" for unscheduled talks
   time: string;
   location: string;
+  timezone?: string; // IANA timezone (e.g., "Europe/Madrid", "America/New_York"). Defaults to DEFAULT_TIMEZONE if not set
+  status: "upcoming" | "past";
   tags: string[];
   materials?: {
     slides?: string;
@@ -24,16 +29,34 @@ export interface Talk {
   video?: string; // YouTube EMBED URL: https://www.youtube.com/embed/VIDEO_ID
 }
 
-export function getTalkStatus(talk: Talk): "upcoming" | "past" | "tbd" {
-  if (talk.date === "TBD") {
-    return "tbd";
-  }
-  // Compare date strings directly (ISO format YYYY-MM-DD allows string comparison)
-  const today = new Date().toISOString().split("T")[0];
-  return talk.date >= today ? "upcoming" : "past";
+function computeStatus(dateStr: string, timezone: string = DEFAULT_TIMEZONE): "upcoming" | "past" {
+  if (dateStr === "TBD") return "upcoming";
+  
+  // Get current date in the talk's timezone
+  const nowInTimezone = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+  const today = `${nowInTimezone.getFullYear()}-${String(nowInTimezone.getMonth() + 1).padStart(2, '0')}-${String(nowInTimezone.getDate()).padStart(2, '0')}`;
+  
+  return dateStr >= today ? "upcoming" : "past";
 }
 
-export const talks: Talk[] = [
+// Helper to get timezone abbreviation (CET/CEST, EST/EDT, etc.)
+export function getTimezoneAbbreviation(dateStr: string, timezone: string = DEFAULT_TIMEZONE): string {
+  if (dateStr === "TBD") return "CET";
+  
+  const date = new Date(dateStr + "T12:00:00");
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    timeZoneName: "short"
+  });
+  
+  const parts = formatter.formatToParts(date);
+  const tzPart = parts.find(part => part.type === "timeZoneName");
+  return tzPart?.value || "CET";
+}
+
+type TalkData = Omit<Talk, "status">;
+
+const talkData: TalkData[] = [
   {
     slug: "baking-strudels-with-js",
     title: "Baking Strudels with JS",
@@ -56,6 +79,7 @@ We'll explore:
 No prior coding or music experience required—just bring your curiosity!`,
     date: "2025-11-27",
     time: "14:00-16:00",
+    // timezone: "Europe/Madrid",
     location: "Demo Room",
     tags: ["live coding", "music", "javascript", "strudel"],
     materials: {
@@ -171,18 +195,19 @@ This class requires nothing more than a desire to understand the professional pr
   },
 ];
 
+export const talks: Talk[] = talkData.map(talk => ({
+  ...talk,
+  status: computeStatus(talk.date, talk.timezone || DEFAULT_TIMEZONE)
+}));
+
 export function getTalkBySlug(slug: string): Talk | undefined {
   return talks.find((talk) => talk.slug === slug);
 }
 
 export function getUpcomingTalks(): Talk[] {
-  return talks.filter((talk) => getTalkStatus(talk) === "upcoming");
+  return talks.filter((talk) => talk.status === "upcoming");
 }
 
 export function getPastTalks(): Talk[] {
-  return talks.filter((talk) => getTalkStatus(talk) === "past");
-}
-
-export function getTBDTalks(): Talk[] {
-  return talks.filter((talk) => getTalkStatus(talk) === "tbd");
+  return talks.filter((talk) => talk.status === "past");
 }

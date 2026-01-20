@@ -1,7 +1,10 @@
-import { getUpcomingTalks, getPastTalks, Talk, getTalkStatus } from "@/data/talks";
+import { getUpcomingTalks, getPastTalks, Talk, getTimezoneAbbreviation, DEFAULT_TIMEZONE } from "@/data/talks";
+
+// Revalidate every 24 hours to automatically update talk statuses
+export const revalidate = 86400;
 
 function TalkCard({ talk }: { talk: Talk }) {
-  const isUpcoming = getTalkStatus(talk) === "upcoming";
+  const isUpcoming = talk.status === "upcoming";
 
   return (
     <a href={`/talks/${talk.slug}`} className="card block p-6">
@@ -57,7 +60,7 @@ function TalkCard({ talk }: { talk: Talk }) {
       >
         <span className="flex items-center gap-1">
           <ClockIcon />
-          {talk.time}
+          {talk.time} {getTimezoneAbbreviation(talk.date, talk.timezone || DEFAULT_TIMEZONE)}
         </span>
         <span className="flex items-center gap-1">
           <LocationIcon />
